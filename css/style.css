@@ -11,6 +11,11 @@ img{
     background-color: white;
 }
 
+.debug .col-4,
+.debug .col-8{
+    border: 2px solid blue;
+}
+
 /* Background App Rules */
 .body-bg{
     display: flex;
@@ -22,8 +27,32 @@ img{
     );
 }
 
-.container-app {
-    max-width: 1600px;
+/* App Rules Layout */
+.container.app{
     margin: 26px auto 24px;
-    width: 100%;
+}
+
+.row{
+    height: 100%;
+}
+
+/* Colonna Sinistra App */
+
+.app-user{
+    height: 75px;
+    background-color: #009688;
+}
+
+.app-notification{
+    height: 75px;
+    background-color: bisque;
+}
+
+.app-search{
+    height: 52px;
+    background-color: rgb(124, 80, 26);
+}
+
+.app-chat{
+    background-color: rgb(26, 104, 124);
 }
