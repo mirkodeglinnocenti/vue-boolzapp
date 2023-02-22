@@ -24,7 +24,7 @@
     
                         <div class="d-flex align-items-center">
     
-                            <img class="app-user_img" src="./img/man-1.png" alt="img user">
+                            <img class="app-user_img" src="./img/woman-2.png" alt="img user">
                             <div class="ps-2">
                                 <p>Sofia</p>
                             </div>
@@ -71,26 +71,12 @@
                     <div class="app-chat flex-grow-1 overflow-y-scroll">
     
                         <!-- App chat Card -->
-                        <div class="app-chat-card d-flex justify-content-between">
+                        <div class="app-chat-card d-flex justify-content-between" v-for="(contatto, indice) in contacts">
     
                             <div class="d-flex justify-content-between">
-                                <img class="app-user_img" src="./img/man-2.png" alt="img user friend">
+                                <img class="app-user_img" :src="contatto.avatar" alt="img user friend">
                                 <div class="ps-2">
-                                    <p>Michele</p>
-                                    <p>Ultimo messaggio inviato</p>
-                                </div>
-                            </div>
-                        
-                            <p>12:00</p>
-    
-                        </div>
-    
-                        <div class="app-chat-card d-flex justify-content-between">
-    
-                            <div class="d-flex justify-content-between">
-                                <img class="app-user_img" src="./img/man-2.png" alt="img user friend">
-                                <div class="ps-2">
-                                    <p>Michele</p>
+                                    <p>{{contatto.name}}</p>
                                     <p>Ultimo messaggio inviato</p>
                                 </div>
                             </div>
@@ -172,7 +158,7 @@
     
     
                         <div class="input-group search-form input-bar">
-                            <input type="text" class="form-control search-form" placeholder="Cerca o inizia una nuova chat" aria-label="Search">
+                            <input type="text" class="form-control search-form" placeholder="Scrivi un messaggio" aria-label="Search">
                         </div>
     
     
