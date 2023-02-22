@@ -54,7 +54,7 @@ p{
     height: 100%;
 }
 
-/* General Rules */
+/**************** General Rules *******************/
 .search-form{
     height: 30px;
 }
@@ -83,7 +83,7 @@ p{
 }
 
 .app-chat{
-    background-color: rgb(26, 104, 124);
+    background-color: white;
 }
 
 /* App user */
@@ -126,6 +126,7 @@ p{
 /* App Chat */
 .app-chat .app-chat-card{
     padding: 14px 22px 10px;
+    border-bottom: 1px solid #D6D6D6;
 }
 
 .app-chat-card .app-user_img{
@@ -140,12 +141,40 @@ p{
 }
 
 .app-chat_message{
-    background-color: rgb(124, 80, 26);
+    background-image: url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-left: 105px;
+    padding-right: 105px;
+    padding-top: 58px;
 }
 
 .app-message-input{
     height: 73px;
     background-color: #EAEAEA;
+}
+
+/* App chat message */
+.app-chat_message .message-send{
+    padding: 20px 5px 7px 16px;
+    background-color: #D5F9BA;
+    border-radius: 10px;
+}
+
+.app-chat_message .message-received{
+    padding: 20px 5px 7px 16px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.message-time{
+    font-size: 12px;
+    color: #6B7376;
+}
+
+.message-send,
+.message-received{
+    margin-bottom: 10px;
 }
 
 /* App message input */
@@ -158,7 +187,7 @@ p{
 }
 
 .app-message-input .app-message-input_icon{
-    font-size: 30px;
+    font-size: 22px;
     color: #6B7376;
 }
 
