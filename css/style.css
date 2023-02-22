@@ -19,6 +19,10 @@ a{
     color: currentColor;
 }
 
+p{
+    margin-bottom: 0;
+}
+
 /* DEBUG RULES */
 /* .debug .app{
     border: 2px solid black;
@@ -63,12 +67,14 @@ a{
 
 .app-notification{
     height: 75px;
-    background-color: bisque;
+    background-color: #8EDAFC;
+    padding: 0 10px;
 }
 
 .app-search{
     height: 52px;
-    background-color: rgb(124, 80, 26);
+    background-color: #EAEAEA;
+    padding: 10px;
 }
 
 .app-chat{
@@ -92,11 +98,25 @@ a{
 }
 
 
+/* App notification */
+.notification-icone-bg{
+    background-color: white;
+    object-fit: cover;
+    object-position: center;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    width: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.notification-icone-bg .notification-icone{
+    font-size: 20px;
+    color: #8EDAFC;
+}
 
-
-
-
+/* App search */
 
 
 /* Colonna Destra App */

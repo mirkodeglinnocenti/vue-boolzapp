@@ -24,7 +24,9 @@
                     <div class="d-flex align-items-center">
 
                         <img class="app-user_img" src="./img/man-1.png" alt="img user">
-                        <span class="ps-2">Sofia</span>
+                        <div class="ps-2">
+                            <p>Sofia</p>
+                        </div>
 
                     </div>
 
@@ -41,8 +43,28 @@
                 </div>
 
 
-                <div class="app-notification">app-notification</div>
-                <div class="app-search">app-search</div>
+                <div class="app-notification d-flex align-items-center">
+
+                    <div class="notification-icone-bg">
+                        <i class="notification-icone fa-solid fa-bell-slash"></i>
+                    </div>
+                    <div class="ps-2">
+                        <p>Ricevi notifiche di nuovi messaggi</p>
+                        <a href="#">Attiva notifiche desktop</a>
+                    </div>
+                    
+
+                </div>
+
+                <div class="app-search">
+                    <form class="container-fluid">
+                        <div class="input-group search-form">
+                          <span class="input-group-text search-form" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+                          <input type="text" class="form-control search-form" placeholder="Cerca o inizia una nuova chat" aria-label="Search">
+                        </div>
+                    </form>
+                </div>
+
                 <div class="app-chat flex-grow-1 overflow-y-scroll">app-chat</div>
             </div>
 
