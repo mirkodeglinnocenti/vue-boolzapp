@@ -54,6 +54,11 @@ p{
     height: 100%;
 }
 
+/* General Rules */
+.search-form{
+    height: 30px;
+}
+
 /* Colonna Sinistra App */
 
 .left-column{
@@ -89,7 +94,7 @@ p{
 }
 
 .app-user_options{
-    color: #B1B1B1;
+    color: #6B7376;
     padding: 0 20px;
 }
 
@@ -118,6 +123,14 @@ p{
 
 /* App search */
 
+/* App Chat */
+.app-chat .app-chat-card{
+    padding: 14px 22px 10px;
+}
+
+.app-chat-card .app-user_img{
+    margin: 0;
+}
 
 /* Colonna Destra App */
 
@@ -132,5 +145,23 @@ p{
 
 .app-message-input{
     height: 73px;
-    background-color: rgb(26, 104, 124);
+    background-color: #EAEAEA;
+}
+
+/* App message input */
+.app-message-input{
+    padding: 10px 43px 10px 38px;
+}
+
+.app-message-input .search-form{
+    height: 52px;
+}
+
+.app-message-input .app-message-input_icon{
+    font-size: 30px;
+    color: #6B7376;
+}
+
+.app-message-input .input-bar{
+    margin: 0 38px;
 }
