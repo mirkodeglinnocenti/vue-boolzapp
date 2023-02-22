@@ -35,7 +35,7 @@ p{
 } */
 
 /* Background App Rules */
-.body-bg{
+.app-bg{
     display: flex;
     height: 100vh;
     background: linear-gradient(
