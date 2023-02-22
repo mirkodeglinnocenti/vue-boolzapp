@@ -5,20 +5,30 @@ img{
     max-width: 100%;
 }
 
+ul,
+ol{
+    list-style: none;
+    margin-bottom: 0;
+}
+
 .row [class^="col"] {
     padding: 0;
 }
 
-/* DEBUG RULES */
-.debug .app{
-    border: 2px solid black;
-    background-color: white;
+a{
+    color: currentColor;
 }
 
-.debug .col-4,
+/* DEBUG RULES */
+/* .debug .app{
+    border: 2px solid black;
+    background-color: white;
+} */
+
+/* .debug .col-4,
 .debug .col-8{
     border: 2px solid blue;
-}
+} */
 
 /* Background App Rules */
 .body-bg{
@@ -42,9 +52,13 @@ img{
 
 /* Colonna Sinistra App */
 
+.left-column{
+    border-right: 1px solid #D6D6D6;
+}
+
 .app-user{
     height: 75px;
-    background-color: #009688;
+    background-color: #EAEAEA;
 }
 
 .app-notification{
@@ -61,11 +75,35 @@ img{
     background-color: rgb(26, 104, 124);
 }
 
+/* App user */
+.app-user_img{
+    width: 52px;
+    display: block;
+    margin-left: 10px;
+}
+
+.app-user_options{
+    color: #B1B1B1;
+    padding: 0 20px;
+}
+
+.app-user_options li{   
+    margin: 0 10px;
+}
+
+
+
+
+
+
+
+
+
 /* Colonna Destra App */
 
 .app-user_chat{
     height: 75px;
-    background-color: bisque;
+    background-color: #EAEAEA;
 }
 
 .app-chat_message{
