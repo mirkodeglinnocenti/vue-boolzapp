@@ -1,0 +1,37 @@
+
+/* Reset Rules */
+
+img{
+    max-width: 100%;
+}
+
+/* Background App Rules */
+
+.container-app {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.parte-alta{
+    height: 15vh;
+    background-color: #009688;
+}
+
+.parte-bassa{
+    height: 85vh;
+    background-color: #D7DBD6;
+}
+
+.app-box {
+    height: 100vh;
+    z-index: 4;
+    position: fixed;
+    top: 0;
+    padding: 26px 0 24px;
+    width: 1600px;
+}
+
+.app {
+    background-color: white;
+    height: 100%;
+}
