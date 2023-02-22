@@ -5,6 +5,10 @@ img{
     max-width: 100%;
 }
 
+.row [class^="col"] {
+    padding: 0;
+}
+
 /* DEBUG RULES */
 .debug .app{
     border: 2px solid black;
@@ -54,5 +58,21 @@ img{
 }
 
 .app-chat{
+    background-color: rgb(26, 104, 124);
+}
+
+/* Colonna Destra App */
+
+.app-user_chat{
+    height: 75px;
+    background-color: bisque;
+}
+
+.app-chat_message{
+    background-color: rgb(124, 80, 26);
+}
+
+.app-message-input{
+    height: 73px;
     background-color: rgb(26, 104, 124);
 }
