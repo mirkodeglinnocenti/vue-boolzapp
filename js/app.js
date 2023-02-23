@@ -173,13 +173,16 @@ const contacts = [
       return {
         contacts: contacts,
         currentContact: 0,
+        previusContact: 0,
         inputNewMessage: '',
         autoreply : null,
       }
     },
     methods:{
         setCurrentContact (indice) {
+            this.previusContact = this.currentContact;
             this.currentContact = indice;
+            console.log(this.previusContact, this.currentContact)
         },
         sendMessage () {
             let messageToSent = this.inputNewMessage.trim();
@@ -205,11 +208,11 @@ const contacts = [
 
             let message = {
                 date: '00:00',
-                message: 'ok',
+                message: 'Keep pushing! 💪',
                 status: "received"
             }
 
-            this.contacts[this.currentContact].messages.push(message);
+            this.contacts[this.previusContact].messages.push(message);
 
         }
          
