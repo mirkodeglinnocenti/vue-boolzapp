@@ -126,33 +126,29 @@
                     <!-- app-chat_message -->
                     <div class="app-chat_message flex-grow-1 overflow-y-scroll">
     
-                        <!-- message send -->
-                        <div class="col-5 offset-7 message-send" v-for="messaggio in contacts[currentContact].messages">
-    
-                            <p>{{messaggio.message}}</p> 
+                        <!-- message -->
+                        <div  v-for="messaggio in contacts[currentContact].messages">
 
-    
-                            <p class="message-time d-flex justify-content-end">{{messaggio.date}}</p>
+                                
+                            <!-- message send -->
+                            <div class="col-5 offset-7 message-send" v-if="messaggio.status === 'sent'">
+        
+                                <p>{{messaggio.message}}</p> 
+        
+                                <p class="message-time d-flex justify-content-end">{{messaggio.date}}</p>
+        
+                            </div>
+                            
+                            <!-- message received -->
+                            <div class="col-5 message-received" v-if="messaggio.status === 'received'">
+        
+                                <p>{{messaggio.message}}</p> 
+        
+                                <p class="message-time d-flex justify-content-end">{{messaggio.date}}</p>
+        
+                            </div>
     
                         </div>
-    
-                        <!-- message send -->
-                        <!-- <div class="col-5 offset-7 message-send">
-    
-                            <p>messaggio inviato</p> 
-    
-                            <p class="message-time d-flex justify-content-end">15:30</p>
-    
-                        </div> -->
-                        
-                        <!-- message received -->
-                        <!-- <div class="col-5 message-received">
-    
-                            <p>messaggio ricevuto </p> 
-    
-                            <p class="message-time d-flex justify-content-end">15:30</p>
-    
-                        </div> -->
     
                     </div>
     
