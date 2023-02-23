@@ -74,6 +74,7 @@ p{
 
 .left-column{
     border-right: 1px solid #D6D6D6;
+    height: 100%;
 }
 
 .app-user{
@@ -155,6 +156,9 @@ p{
 
 
 /* Colonna Destra App */
+.right-column{
+    height: 100%;
+}
 
 .app-user_chat{
     height: 75px;

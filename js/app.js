@@ -164,7 +164,8 @@ const contacts = [
                 status: "received"
             }
         ],
-    }
+    },
+    
     ]
 
   createApp({
@@ -172,12 +173,46 @@ const contacts = [
       return {
         contacts: contacts,
         currentContact: 0,
+        inputNewMessage: '',
+        autoreply : null,
       }
     },
     methods:{
         setCurrentContact (indice) {
             this.currentContact = indice;
+        },
+        sendMessage () {
+            let messageToSent = this.inputNewMessage.trim();
+
+            if (messageToSent === '') {
+                return
+            }
+
+            let message = {
+                date: '00:00',
+                message: messageToSent,
+                status: "sent"
+            }
+
+            this.contacts[this.currentContact].messages.push(message);
+
+            this.inputNewMessage = '';
+            
+            // Risposta automatica dopo un secondo
+            this.autoreply = setTimeout(this.autoMessage, 1000)
+        },
+        autoMessage(){
+
+            let message = {
+                date: '00:00',
+                message: 'ok',
+                status: "received"
+            }
+
+            this.contacts[this.currentContact].messages.push(message);
+
         }
+         
     }
   }).mount('#app')
 
