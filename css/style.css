@@ -9,6 +9,7 @@ ul,
 ol{
     list-style: none;
     margin-bottom: 0;
+    padding-left: 0;
 }
 
 .row [class^="col"] {
@@ -57,6 +58,16 @@ p{
 /**************** General Rules *******************/
 .search-form{
     height: 30px;
+}
+
+.app-chat-card .app-user_img{
+    width: 60px;
+}
+
+.user-name{
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
 }
 
 /* Colonna Sinistra App */
@@ -133,6 +144,12 @@ p{
     margin: 0;
 }
 
+.last-message{
+    font-size: 12px;
+    color: #686868;
+}
+
+
 /* Colonna Destra App */
 
 .app-user_chat{
@@ -142,8 +159,8 @@ p{
 
 .app-chat_message{
     background-image: url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-repeat: repeat;
+    background-size: contain;
     padding-left: 105px;
     padding-right: 105px;
     padding-top: 58px;
@@ -154,22 +171,29 @@ p{
     background-color: #EAEAEA;
 }
 
+/* App user chat */
+.app-user_chat .message-time{
+    font-size: 14px;
+}
+
 /* App chat message */
-.app-chat_message .message-send{
+.app-chat_message .message-send,
+.app-chat_message .message-received{
     padding: 20px 5px 7px 16px;
-    background-color: #D5F9BA;
     border-radius: 10px;
 }
 
+.app-chat_message .message-send{
+    background-color: #D5F9BA;
+}
+
 .app-chat_message .message-received{
-    padding: 20px 5px 7px 16px;
     background-color: white;
-    border-radius: 10px;
 }
 
 .message-time{
     font-size: 12px;
-    color: #6B7376;
+    color: #9a9ea0;
 }
 
 .message-send,
