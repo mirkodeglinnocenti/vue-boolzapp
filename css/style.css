@@ -140,6 +140,10 @@ p{
     border-bottom: 1px solid #D6D6D6;
 }
 
+.active{
+    background-color: #EAEAEA;
+}
+
 .app-chat-card .app-user_img{
     margin: 0;
 }

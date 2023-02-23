@@ -74,7 +74,8 @@
                             <!-- App chat Card -->
                             <li class="app-chat-card d-flex justify-content-between" 
                                 v-for="(contatto, indice) in contacts" 
-                                @click="setCurrentContact(indice)">
+                                @click="setCurrentContact(indice)"
+                                :class="indice === currentContact ? 'active' : '' ">
         
                                 <div class="d-flex justify-content-between align-items-center">
                                     <img class="app-user_img" :src="contatto.avatar" alt="img user friend">
