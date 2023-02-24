@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BoolZapp</title>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.2.1/build/global/luxon.min.js"></script>
     <script src="https://kit.fontawesome.com/913f8a24a8.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
@@ -75,7 +76,8 @@
                             <li class="app-chat-card d-flex justify-content-between" 
                                 v-for="(contatto, indice) in contacts" 
                                 @click="setCurrentContact(indice)"
-                                :class="indice === currentContact ? 'active' : '' ">
+                                :class="indice === currentContact ? 'active' : '' "
+                            >
         
                                 <div class="d-flex justify-content-between align-items-center">
                                     <img class="app-user_img" :src="contatto.avatar" alt="img user friend">
@@ -106,7 +108,7 @@
                             <img class="app-user_img" :src="contacts[currentContact].avatar" alt="img user friend">
                             <div class="ps-2">
                                 <h3 class="user-name">{{contacts[currentContact].name}}</h3>
-                                <p class="message-time">Ultimo accesso oggi alle 12:00</p>
+                                <p class="message-time">Ultimo accesso oggi alle {{getLastMessage()}}</p>
                             </div>
     
                         </div>
@@ -124,18 +126,17 @@
                     </div>
     
                     <!-- app-chat_message -->
-                    <div class="app-chat_message flex-grow-1 overflow-y-scroll">
+                    <ul class="app-chat_message flex-grow-1 overflow-y-scroll">
     
                         <!-- message -->
-                        <div  v-for="messaggio in contacts[currentContact].messages">
+                        <li  v-for="messaggio in contacts[currentContact].messages">
 
-                                
                             <!-- message send -->
-                            <div class="col-5 offset-7 message-send" v-if="messaggio.status === 'sent'">
+                            <div class="col-5 offset-7 message-send overflow-hidden" v-if="messaggio.status === 'sent'">
         
                                 <p>{{messaggio.message}}</p> 
         
-                                <p class="message-time d-flex justify-content-end">{{messaggio.date}}</p>
+                                <p class="message-time d-flex justify-content-end">{{getMessageTime(messaggio.date)}}</p>
         
                             </div>
                             
@@ -144,13 +145,13 @@
         
                                 <p>{{messaggio.message}}</p> 
         
-                                <p class="message-time d-flex justify-content-end">{{messaggio.date}}</p>
+                                <p class="message-time d-flex justify-content-end">{{getMessageTime(messaggio.date)}}</p>
         
                             </div>
     
-                        </div>
+                        </li>
     
-                    </div>
+                    </ul>
     
                     <!-- app-message-input -->
                     <div class="app-message-input d-flex justify-content-between align-items-center">

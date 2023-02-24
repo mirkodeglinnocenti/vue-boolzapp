@@ -1,7 +1,10 @@
 
 
+// Vue
+const { createApp } = Vue;
 
-const { createApp } = Vue
+// Luxon
+const DateTime = luxon.DateTime;
 
 const contacts = [
     {
@@ -177,47 +180,114 @@ const contacts = [
         inputNewMessage: '',
         autoreply : null,
       }
+    // },
+    // computed: {
+        
     },
     methods:{
-        setCurrentContact (indice) {
-            this.previusContact = this.currentContact;
-            this.currentContact = indice;
-            console.log(this.previusContact, this.currentContact)
-        },
-        sendMessage () {
-            let messageToSent = this.inputNewMessage.trim();
-
-            if (messageToSent === '') {
-                return
-            }
-
-            let message = {
-                date: '00:00',
-                message: messageToSent,
-                status: "sent"
-            }
-
-            this.contacts[this.currentContact].messages.push(message);
-
-            this.inputNewMessage = '';
-            
-            // Risposta automatica dopo un secondo
-            this.autoreply = setTimeout(this.autoMessage, 1000)
-        },
-        autoMessage(){
-
-            let message = {
-                date: '00:00',
-                message: 'Keep pushing! 💪',
-                status: "received"
-            }
-
-            this.contacts[this.previusContact].messages.push(message);
-
-        }
+        setCurrentContact,
+        sendMessage,
+        autoMessage,
+        getMessageTime,
+        timeNow,
+        getLastMessage,
          
     }
   }).mount('#app')
 
 
+
+
+
+// Funzioni
+
+// Funzione per assegnare il valore di contatto corrente e di contatto precedente
+function setCurrentContact (indice) {
+    this.previusContact = this.currentContact;
+    this.currentContact = indice;
+    // console.log(this.previusContact, this.currentContact)
+}
+
+// Funzione per inviare un messaggio
+function sendMessage () {
+    let messageToSent = this.inputNewMessage.trim();
+
+    if (messageToSent === '') {
+        return
+    }
+
+    let message = {
+        date: timeNow(),
+        message: messageToSent,
+        status: "sent"
+    }
+
+    this.contacts[this.currentContact].messages.push(message);
+
+    this.inputNewMessage = '';
+    
+    // Risposta automatica dopo un secondo
+    this.autoreply = setTimeout(this.autoMessage, 1000)
+}
+
+// Funzione per risposta automatica
+function autoMessage() {
+
+    console.log(this.currentContact,this.previusContact)
+
+    let message = {
+        date: timeNow(),
+        message: 'Keep pushing! 💪',
+        status: "received"
+    }
+
+    if ( this.currentContact === this.previusContact ) {
+
+        this.contacts[this.currentContact].messages.push(message);
+
+    } else {
+
+        this.contacts[this.currentContact].messages.push(message);
+
+    }
+
+}
+
+// Funzione per restituire l'ora e i minuti del messaggio visualizzato
+function getMessageTime(dataStringa){
+
+    // prendere la stringa con i dati
+    const dateToParse = dataStringa;
+
+    // console.log (dateToParse)
+
+    // creare variabile con il formato data spiegata a luxon
+    const parsedDate = DateTime.fromFormat(dateToParse, 'dd/LL/yyyy HH:mm:ss')
   
+    // console.log(parsedDate.toFormat('HH:mm'));
+
+    // restituire la stringa con il formato scelto
+    return parsedDate.toFormat('HH:mm')
+}
+
+// Funzione che restituisce ora e minuti dell'istante in cui viene invocata
+function timeNow() {
+
+    const now = DateTime.now()
+
+    // creare variabile con il formato data spiegata a luxon
+    const timeNow = now.toFormat('dd/LL/yyyy HH:mm:ss');
+
+    return timeNow
+
+}
+
+function getLastMessage (){
+
+    let messaggiChat = contacts[this.currentContact].messages;
+    let lastMessageIndex = contacts[this.currentContact].messages.length - 1;
+    // console.log(lastMessageIndex , messaggiChat[lastMessageIndex].date)
+    let lastMessageDate = messaggiChat[lastMessageIndex].date;
+    
+    return getMessageTime(lastMessageDate);
+}
