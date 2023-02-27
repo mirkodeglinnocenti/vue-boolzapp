@@ -179,10 +179,13 @@ const contacts = [
         previusContact: 0,
         inputNewMessage: '',
         autoreply : null,
+        search: "",
       }
-    // },
-    // computed: {
-        
+    },
+    watch: {
+        currentContact: function () {
+            this.resetMessage();
+        }
     },
     methods:{
         setCurrentContact,
@@ -190,7 +193,10 @@ const contacts = [
         autoMessage,
         getMessageTime,
         timeNow,
-        getLastMessage,
+        resetMessage,
+        getLastMessageTime,
+        getAllLastMessageTime,
+        searchFilter,
          
     }
   }).mount('#app')
@@ -224,16 +230,19 @@ function sendMessage () {
 
     this.contacts[this.currentContact].messages.push(message);
 
-    this.inputNewMessage = '';
+    this.resetMessage();
+
+    const activeContact = this.contacts[this.currentContact] 
     
     // Risposta automatica dopo un secondo
-    this.autoreply = setTimeout(this.autoMessage, 1000)
+    this.autoreply = setTimeout(this.autoMessage, 1000, activeContact)
+    
 }
 
 // Funzione per risposta automatica
-function autoMessage() {
+function autoMessage(contattoAttivo) {
 
-    console.log(this.currentContact,this.previusContact)
+    console.log(this.currentContact,contattoAttivo)
 
     let message = {
         date: timeNow(),
@@ -241,16 +250,14 @@ function autoMessage() {
         status: "received"
     }
 
-    if ( this.currentContact === this.previusContact ) {
+    contattoAttivo.messages.push(message);
 
-        this.contacts[this.currentContact].messages.push(message);
 
-    } else {
+}
 
-        this.contacts[this.currentContact].messages.push(message);
-
-    }
-
+// Funzione reset message
+function resetMessage () {
+    this.inputNewMessage = '';
 }
 
 // Funzione per restituire l'ora e i minuti del messaggio visualizzato
@@ -278,11 +285,23 @@ function timeNow() {
     // creare variabile con il formato data spiegata a luxon
     const timeNow = now.toFormat('dd/LL/yyyy HH:mm:ss');
 
-    return timeNow
+    return timeNow;
 
 }
 
-function getLastMessage (){
+// Funzione di ricerca dei nomi nella search bar
+function searchFilter(contatto){
+    const searchInput = this.search.trim().toLowerCase();
+    const name = contatto.name.toLowerCase();
+
+    const verificaNome = !name.includes(searchInput);
+    console.log(searchInput, name, verificaNome)
+
+    return verificaNome; 
+
+}
+
+function getLastMessageTime (){
 
     let messaggiChat = contacts[this.currentContact].messages;
     let lastMessageIndex = contacts[this.currentContact].messages.length - 1;
@@ -291,3 +310,19 @@ function getLastMessage (){
     
     return getMessageTime(lastMessageDate);
 }
+
+function getAllLastMessageTime (contatto){
+
+    let messaggiChat = contatto.messages;
+    let lastMessageIndex = contatto.messages.length - 1;
+    // console.log(lastMessageIndex , messaggiChat[lastMessageIndex].date)
+    let lastMessageDate = messaggiChat[lastMessageIndex].date;
+    
+    return getMessageTime(lastMessageDate);
+}
+
+
+
+// let arrayMessaggiRicevuti = contacts[this.currentContact].messages.filter(funzione => this.message.status === 'received')
+
+// console.log(arrayMessaggiRicevuti)
